@@ -60,8 +60,32 @@ Key Differences:
 - Use `DBMS_OUTPUT.PUT_LINE` to display the result.
 - Call the procedure with a number as input.
 
+## Program:
+```
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE PROCEDURE find_square (
+    n IN NUMBER
+)
+IS
+    result NUMBER;
+BEGIN
+    result := n * n;
+
+    DBMS_OUTPUT.PUT_LINE('Square of ' || n || ' is ' || result);
+END;
+/
+
+BEGIN
+    find_square(6);
+END;
+/
+```
 **Expected Output:**  
 Square of 6 is 36
+
+
+<img width="867" height="236" alt="Screenshot 2026-08-24 093238" src="https://github.com/user-attachments/assets/e2528ec8-9df4-4a51-8199-718397d6d00b" />
 
 ---
 
