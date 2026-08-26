@@ -98,8 +98,31 @@ Square of 6 is 36
 - Return the result using the `RETURN` statement.
 - Call the function using a `SELECT` statement or in an anonymous block.
 
+ 
+  
+## Program:
+```
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE FUNCTION get_factorial(n NUMBER)
+RETURN NUMBER
+IS
+ fact NUMBER := 1;
+BEGIN
+ FOR i IN 1..n LOOP
+ fact := fact * i;
+ END LOOP;
+ RETURN fact;
+END;
+/
+BEGIN
+ DBMS_OUTPUT.PUT_LINE('Factorial of 5 is ' || get_factorial(5));
+END;
+/
+```
 **Expected Output:**  
 Factorial of 5 is 120
+
+<img width="877" height="253" alt="image" src="https://github.com/user-attachments/assets/25428d35-10af-44fc-8efc-c464e256c157" />
 
 ---
 
@@ -111,8 +134,28 @@ Factorial of 5 is 120
 - Use the `MOD` function to check if the number is divisible by 2.
 - Display whether it is Even or Odd using `DBMS_OUTPUT.PUT_LINE`.
 
+## Program:
+```
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PROCEDURE check_even_odd(n NUMBER)
+IS
+BEGIN
+ IF MOD(n, 2) = 0 THEN
+ DBMS_OUTPUT.PUT_LINE(n || ' is Even');
+ ELSE
+ DBMS_OUTPUT.PUT_LINE(n || ' is Odd');
+ END IF;
+END;
+/
+BEGIN
+ check_even_odd(12);
+END;
+/
+```
 **Expected Output:**  
 12 is Even
+
+<img width="859" height="242" alt="image" src="https://github.com/user-attachments/assets/bf7401d2-0ecf-4a29-bcad-42e5a55058f3" />
 
 ---
 
@@ -125,8 +168,26 @@ Factorial of 5 is 120
 - Return the reversed number.
 - Call the function and display the output.
 
+## Program:
+```
+SET SERVEROUTPUT ON;
+DECLARE
+ num NUMBER := 1234;
+ rev NUMBER := 0;
+ digit NUMBER;
+BEGIN
+ WHILE num > 0 LOOP
+ digit := MOD(num, 10);
+ rev := rev * 10 + digit;
+ num := TRUNC(num / 10);
+ END LOOP;
+ DBMS_OUTPUT.PUT_LINE('Reversed number of 1234 is ' || rev);
+END;
+```
 **Expected Output:**  
 Reversed number of 1234 is 4321
+
+<img width="759" height="254" alt="image" src="https://github.com/user-attachments/assets/e8046cea-4e36-4d7a-85f7-35f65714d8a1" />
 
 ---
 
@@ -138,6 +199,24 @@ Reversed number of 1234 is 4321
 - Use a loop from 1 to 10 to multiply the input number.
 - Display the multiplication results using `DBMS_OUTPUT.PUT_LINE`.
 
+## Program:
+
+```
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PROCEDURE print_table(n NUMBER)
+IS
+BEGIN
+ DBMS_OUTPUT.PUT_LINE('Multiplication table of ' || n || ':');
+ FOR i IN 1..10 LOOP
+ DBMS_OUTPUT.PUT_LINE(n || ' x ' || i || ' = ' || (n * i));
+ END LOOP;
+END;
+/
+BEGIN
+ print_table(5);
+END;
+/
+```
 **Expected Output:**  
 Multiplication table of 5:  
 5 x 1 = 5  
@@ -145,6 +224,8 @@ Multiplication table of 5:
 5 x 3 = 15  
 ...  
 5 x 10 = 50
+
+<img width="747" height="485" alt="image" src="https://github.com/user-attachments/assets/94cfb3f1-aae9-46af-a764-8ef3abdd553e" />
 
 ## RESULT
 Thus, the PL/SQL programs using procedures and functions were written, compiled, and executed successfully.
