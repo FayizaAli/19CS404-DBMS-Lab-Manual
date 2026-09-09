@@ -171,8 +171,7 @@ WHERE phone IN (
 
 **Output:**
 
-
-
+<img width="866" height="634" alt="image" src="https://github.com/user-attachments/assets/52c71f6d-4c4d-4065-8cb0-4a0a85a215a9" />
 
 **Question 6**
 ---
@@ -197,56 +196,116 @@ WHERE grade = (
 ```
 
 **Output:**
+<img width="1072" height="628" alt="image" src="https://github.com/user-attachments/assets/b6c02d8f-6297-48da-8e4a-c7171bd02a52" />
 
 
   
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query that retrieves the all the columns from the Table Grades, where the grade is equal to the minimum grade achieved in each subject.
+
+Sample table: GRADES (attributes: student_id, student_name, subject, grade)
+
+For example:
+
+Result student_id student_name subject grade
+
+2 Bob Math 85 6 Frank Science 85 7 John Social 85
 
 ```sql  
---  Paste your SQL code below for Question 7
+SELECT *
+FROM Grades g
+WHERE grade = (
+    SELECT MIN(grade)
+    FROM Grades
+    WHERE subject = g.subject
+);
 ```
 
 **Output:**
+<img width="1086" height="657" alt="image" src="https://github.com/user-attachments/assets/f1892b54-f074-4b2c-97f2-dd7562be1c1d" />
 
-![Output7](output.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+From the following tables write a SQL query to find salespeople who had more than one customer. Return salesman_id and name.
+
+salesman table
+
+name type
+
+salesman_id numeric(5) name varchar(30) city varchar(15) commission decimal(5,2)
+
+customer table
+
+name type
+
+customer_id int cust_name text city text grade int salesman_id int
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT s.salesman_id, s.name
+FROM salesman s
+JOIN customer c
+ON s.salesman_id = c.salesman_id
+GROUP BY s.salesman_id, s.name
+HAVING COUNT(c.customer_id) > 1;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="941" height="657" alt="image" src="https://github.com/user-attachments/assets/d861f1c7-641a-4c30-a80c-dcf559a97e4a" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose AGE is LESS than $30
+
+Sample table: CUSTOMERS
+
+ID NAME AGE ADDRESS SALARY
+
+1 Ramesh 32 Ahmedabad 2000 2 Khilan 25 Delhi 1500 3 Kaushik 23 Kota 2000 4 Chaitali 25 Mumbai 6500 5 Hardik 27 Bhopal 8500 6 Komal 22 Hyderabad 4500
+
+7 Muffy 24 Indore 10000
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT *
+FROM CUSTOMERS
+WHERE AGE < 30;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1100" height="779" alt="image" src="https://github.com/user-attachments/assets/e4182426-36b6-4078-9763-f7338eea3c83" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is EQUAL TO $1500.
+
+Sample table: CUSTOMERS
+
+ID NAME AGE ADDRESS SALARY
+
+1 Ramesh 32 Ahmedabad 2000 2 Khilan 25 Delhi 1500 3 Kaushik 23 Kota 2000 4 Chaitali 25 Mumbai 6500 5 Hardik 27 Bhopal 8500 6 Komal 22 Hyderabad 4500
+
+7 Muffy 24 Indore 10000
+
+For example:
+
+Result ID NAME AGE ADDRESS SALARY
+
+2 Khilan 25 Delhi 1500
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT *
+FROM CUSTOMERS
+WHERE SALARY = 1500;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1110" height="540" alt="image" src="https://github.com/user-attachments/assets/e80a207e-3471-4f3c-95b7-84087c731ea8" />
 
 
 ## RESULT
